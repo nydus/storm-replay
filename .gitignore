@@ -1,0 +1,4 @@
+build/
+replays/
+node_modules/
+*.log
