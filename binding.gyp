@@ -2,7 +2,6 @@
   "targets": [
     {
       "target_name": "StormLib",
-      'product_extension': 'node',
       "sources": [
         "src/StormLib.cpp",
 
