@@ -6,7 +6,6 @@
 
 void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     Nan::HandleScope scope;
-    // v8::Isolate* isolate = args.GetIsolate();
 
     HANDLE hArchive = NULL;
     HANDLE hFile = NULL;
@@ -46,8 +45,17 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     }
 }
 
+void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
+    Nan::HandleScope scope;
+
+    HANDLE hArchive = NULL;
+
+    args.GetReturnValue().Set(Nan::New<v8::Boolean>(false));
+}
+
 void init(v8::Handle<v8::Object> exports) {
     Nan::Export(exports, "extractFile", extractFile);
+    Nan::Export(exports, "getHeader", getHeader);
 }
 
 NODE_MODULE(StormLib, init);

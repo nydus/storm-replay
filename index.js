@@ -1,7 +1,7 @@
 var bindings = require('bindings')('storm-replay');
 
 module.exports = {
-    extract: function(Archive, File) {
+    extractFile: function(Archive, File) {
         // 'replay.attributes.events',
         // 'replay.details',
         // 'replay.game.events',
@@ -12,13 +12,17 @@ module.exports = {
         // 'replay.sync.events'
         var ret = bindings.extractFile(Archive, File);
         var obj = {};
-        obj.err = (ret.length === undefined)
+        obj.err = (ret.length === undefined);
         obj.data = ret;
+        obj.length = ret.length;
         return obj;
+    },
+
+    getHeader: function(Archive) {
+        var ret = bindings.getHeader(Archive);
+        return ret;
     }
 };
 
-// var ret = bindings.extract('replays/garden-of-terror.StormReplay', 'replay.game.events');
-// var ret = bindings.extract('replays/garden-of-terror.StormReplay', 'rasdf');
-// console.log(ret.length);
-// if fail, then ret.length === undefined
+// var data = bindings.extractFile('replays/garden-of-terror.StormReplay', 'replay.game.events');
+// var header = bindings.getHeader('replays/garden-of-terror.StormReplay');
