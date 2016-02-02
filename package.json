@@ -1,5 +1,5 @@
 {
-  "name": "StormLib",
+  "name": "storm-replay",
   "version": "0.0.1",
   "description": "NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)",
   "main": "index.js",

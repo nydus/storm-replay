@@ -1,6 +1,4 @@
-//  module.exports = require('./build/Release/StormLib.node');
-
-var bindings = require('bindings')('StormLib');
+var bindings = require('bindings')('storm-replay');
 
 module.exports = {
     extract: function(Archive, File) {

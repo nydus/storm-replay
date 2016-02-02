@@ -1,9 +1,9 @@
 {
   "targets": [
     {
-      "target_name": "StormLib",
+      "target_name": "storm-replay",
       "sources": [
-        "src/StormLib.cpp",
+        "src/storm-replay.cpp",
 
         "src/StormLib/src/adpcm/adpcm.cpp",
         "src/StormLib/src/huffman/huff.cpp",
