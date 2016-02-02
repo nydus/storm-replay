@@ -14,8 +14,8 @@ module.exports = {
         var obj = {
             err: (ret.length === undefined),
             content: {
-                data: ret.slice(16, 16 + ret.readUInt32LE(12)),
-                size: ret.readUInt32LE(12)
+                data: ret,
+                size: ret.length
             }
         };
         return obj;
