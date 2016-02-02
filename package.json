@@ -4,7 +4,7 @@
   "description": "NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/node-cpplint/bin/cpplint --verbose 3 src/storm-replay.cpp --linelength 120"
   },
   "author": "Justin J. Novack <jnovack@gmail.com>",
   "license": "MIT",

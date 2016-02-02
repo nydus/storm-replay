@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 "logConcurrentOutput": true
             },
             lint: {
-                tasks: ['jshint', 'watch']
+                tasks: [ 'jshint', 'watch' ]
             }
         },
         simplemocha: {
