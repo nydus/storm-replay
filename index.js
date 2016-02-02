@@ -11,19 +11,18 @@ module.exports = {
         // 'replay.smartcam.events',
         // 'replay.sync.events'
         var ret = bindings.extractFile(Archive, File);
-        var obj = {
+        return {
             err: (ret.length === undefined),
             content: {
                 data: ret,
                 size: ret.length
             }
         };
-        return obj;
     },
 
     getHeader: function(Archive) {
         var ret = bindings.getHeader(Archive);
-        var obj = {
+        return {
             err: (ret.length === undefined),
             header: {
                 data: ret,
@@ -34,9 +33,5 @@ module.exports = {
                 size: ret.readUInt32LE(12)
             }
         };
-        return obj;
     }
 };
-
-// var data = bindings.extractFile('replays/garden-of-terror.StormReplay', 'replay.game.events');
-// var header = bindings.getHeader('replays/garden-of-terror.StormReplay');
