@@ -4,6 +4,9 @@ storm-replay
 NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib) for
 parsing Heroes of the Storm replay files (`.StormReplay`).
 
+This is a backend library designed for speedy extraction of files.  In tests
+against the javascript library, extraction times improved nearly 60%.
+
 # API
 
 ## .getHeader(Archive)
@@ -45,6 +48,11 @@ provided, `.err` and `.content.size`, is there for validation.
         }
     };
 ```
+
+# TODO
+
+* Currently, the build is only working on OSX. It should be relatively easy to
+convert the `Makefile` for Linux, but may take quite a bit of time for Windows.
 
 # References
 
