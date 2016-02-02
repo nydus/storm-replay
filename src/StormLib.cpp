@@ -4,7 +4,7 @@
 #include "StormLib/src/StormCommon.h"
 #include "StormLib/src/StormPort.h"
 
-void get(const Nan::FunctionCallbackInfo<v8::Value> & args) {
+void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     Nan::HandleScope scope;
     // v8::Isolate* isolate = args.GetIsolate();
 
@@ -37,26 +37,6 @@ void get(const Nan::FunctionCallbackInfo<v8::Value> & args) {
 
             args.GetReturnValue().Set(buffer.ToLocalChecked());
 
-/*
-            // Capture the file
-            char  inBuffer[0xF0000];
-            char  outBuffer[0xF0000];
-            int   outLength;
-            DWORD dwBytes = 1;
-
-            v8::MaybeLocal<v8::Object> buffer;
-
-            while(dwBytes > 0)
-            {
-                SFileReadFile(hFile, inBuffer, sizeof(inBuffer), &dwBytes, NULL);
-                if(dwBytes > 0) {
-                    bool bExplode = SCompExplode(outBuffer, &outLength, inBuffer, dwBytes);
-                    buffer = Nan::CopyBuffer(outBuffer, outLength);
-                }
-            }
-*/
-
-
         } else {
             args.GetReturnValue().Set(Nan::New<v8::Boolean>(bFile));
         }
@@ -64,11 +44,10 @@ void get(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     } else {
         args.GetReturnValue().Set(Nan::New<v8::Boolean>(bArchive));
     }
-
 }
 
 void init(v8::Handle<v8::Object> exports) {
-    Nan::Export(exports, "get", get);
+    Nan::Export(exports, "extractFile", extractFile);
 }
 
 NODE_MODULE(StormLib, init);
