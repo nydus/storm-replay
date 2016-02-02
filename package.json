@@ -8,8 +8,33 @@
   },
   "author": "Justin J. Novack <jnovack@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnovack/storm-replay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jnovack/storm-replay/issues"
+  },
+  "homepage": "https://github.com/jnovack/storm-replay",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "keywords": [
+    "hots",
+    "blizzard",
+    "stormreplay",
+    "mpq"
+  ],
   "dependencies": {
     "bindings": "^1.2.1",
     "nan": "^2.2.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^2.1.0",
+    "grunt-contrib-jshint": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-simple-mocha": "^0.4.1",
+    "node-cpplint": "^0.4.0"
   }
 }
