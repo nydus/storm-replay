@@ -28,7 +28,7 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
 
         if (bFile) {
             // Capture the file
-            char  szBuffer[0xF0000];
+            char  szBuffer[0x3FFFFF];
             DWORD dwBytes = 1;
 
             v8::MaybeLocal<v8::Object> buffer;
