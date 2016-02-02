@@ -40,7 +40,11 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
                 }
             }
 
-            args.GetReturnValue().Set(buffer.ToLocalChecked());
+            if (!buffer.IsEmpty()) {
+                args.GetReturnValue().Set(buffer.ToLocalChecked());
+            } else {
+                args.GetReturnValue().Set(Nan::New<v8::Boolean>(false));
+            }
 
         } else {
             args.GetReturnValue().Set(Nan::New<v8::Boolean>(bFile));
