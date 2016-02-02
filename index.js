@@ -17,8 +17,7 @@ module.exports = {
         obj.err = (ret.length === undefined)
         obj.data = ret;
         return obj;
-    };
-
+    }
 };
 
 // var ret = bindings.extract('replays/garden-of-terror.StormReplay', 'replay.game.events');
