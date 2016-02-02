@@ -1,7 +1,50 @@
-storm-replay (a NodeJS wrapper)
+storm-replay
 ========
 
-NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)
+NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib) for
+parsing Heroes of the Storm replay files (`.StormReplay`).
+
+# API
+
+## .getHeader(Archive)
+
+Retrieve the MPQ Header information for the `Archive`.  This header includes
+the all important build information for parsing.
+
+The object returned contains the full header as `.header.data` and the parsed
+header as `.content.data`.  You will most likely want `.content.data`. The
+other data provided, `.err` and `.content.size`, is there for validation.
+
+```javascript
+    return {
+        err: (Header.length === undefined),
+        header: {
+            data: Header,
+            size: Header.length
+        },
+        content: {
+            data: Header.slice(16, 16 + Header.readUInt32LE(12)),
+            size: Header.readUInt32LE(12)
+        }
+    };
+```
+
+## .extractFile(Archive, File)
+
+Extract `File` from `Archive` as a buffer.
+
+The object returned has the data you want as `.content.data`.  The other data
+provided, `.err` and `.content.size`, is there for validation.
+
+```javascript
+    return {
+        err: (File.length === undefined),
+        content: {
+            data: File,
+            size: File.length
+        }
+    };
+```
 
 # References
 

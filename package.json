@@ -4,13 +4,17 @@
   "description": "NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/node-cpplint/bin/cpplint --verbose 3 src/storm-replay.cpp --linelength 120"
+    "cpplint": "node_modules/node-cpplint/bin/cpplint --verbose 3 src/storm-replay.cpp --linelength 120",
+    "jslint": "node_modules/grunt-contrib-jshint/node_modules/.bin/jshint *.js",
+    "rebuild": "node-gyp configure build",
+    "test": "npm run cpplint && npm run jslint && npm run rebuild",
+    "predeploy": "npm test"
   },
   "author": "Justin J. Novack <jnovack@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jnovack/storm-replay.git"
+    "url": "https://github.com/jnovack/storm-replay.git"
   },
   "bugs": {
     "url": "https://github.com/jnovack/storm-replay/issues"
