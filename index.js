@@ -20,7 +20,11 @@ module.exports = {
 
     getHeader: function(Archive) {
         var ret = bindings.getHeader(Archive);
-        return ret;
+        var obj = {};
+        obj.err = (ret.length === undefined);
+        obj.data = ret;
+        obj.length = ret.length;
+        return obj;
     }
 };
 
