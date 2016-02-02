@@ -6,8 +6,8 @@
 
 #include <nan.h>
 
-#include <iostream>
-#include <fstream>
+#include <iostream>  // NOLINT(readability/streams)
+#include <fstream>   // NOLINT(readability/streams)
 
 #include "StormLib/src/StormLib.h"
 #include "StormLib/src/StormCommon.h"
@@ -60,7 +60,7 @@ void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     // open the binary file
     archive.open(*v8::String::Utf8Value(args[0]->ToString()), std::ifstream::binary | std::ios::in);
 
-    if(archive.is_open() == true) {
+    if (archive.is_open() == true) {
         // set up variables
         char * readBuffer;
         uint32_t userDataHeaderSize;

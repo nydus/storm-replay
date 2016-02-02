@@ -11,19 +11,29 @@ module.exports = {
         // 'replay.smartcam.events',
         // 'replay.sync.events'
         var ret = bindings.extractFile(Archive, File);
-        var obj = {};
-        obj.err = (ret.length === undefined);
-        obj.data = ret;
-        obj.length = ret.length;
+        var obj = {
+            err: (ret.length === undefined),
+            content: {
+                data: ret.slice(16, 16 + ret.readUInt32LE(12)),
+                size: ret.readUInt32LE(12)
+            }
+        };
         return obj;
     },
 
     getHeader: function(Archive) {
         var ret = bindings.getHeader(Archive);
-        var obj = {};
-        obj.err = (ret.length === undefined);
-        obj.data = ret;
-        obj.length = ret.length;
+        var obj = {
+            err: (ret.length === undefined),
+            header: {
+                data: ret,
+                size: ret.length
+            },
+            content: {
+                data: ret.slice(16, 16 + ret.readUInt32LE(12)),
+                size: ret.readUInt32LE(12)
+            }
+        };
         return obj;
     }
 };
