@@ -49,6 +49,21 @@ provided, `.err` and `.content.size`, is there for validation.
     };
 ```
 
+## .removeMessages(Archive)
+
+Remove `replay.message.events` from the archive.
+
+Chat messages may be toxic, offensive, taken out of context or otherwise not
+fit for human consumption.  This sanitation method provides some protection
+to ensure a player's actions speak louder than his or her words.
+
+Returns `true` if there are no messages in the file, `false` if there was an
+issue.
+
+```javascript
+    return bool;
+```
+
 # TODO
 
 * Currently, the build is only working on OSX. It should be relatively easy to

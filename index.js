@@ -33,5 +33,17 @@ module.exports = {
                 size: ret.readUInt32LE(12)
             }
         };
+    },
+
+    /**
+     * Remove replay.message.events from the archive.  As some chat messages
+     * may be toxic or taken out of context, this sanitation method provides
+     * the ability to ensure a player's actions speak louder than her words.
+     *
+     * @summary Remove replay.message.events from the MPQ archive.
+     */
+    removeMessages: function(Archive) {
+        var ret = bindings.removeMessages(Archive);
+        return ret;
     }
 };

@@ -110,9 +110,41 @@ void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     args.GetReturnValue().Set(Nan::New<v8::Boolean>(false));
 }
 
+// Remove 'replay.message.events' from the archive
+void removeMessages(const Nan::FunctionCallbackInfo<v8::Value> & args) {
+    // Allocate a new scope when we create v8 JavaScript objects.
+    Nan::HandleScope scope;
+
+    // Define variables
+    HANDLE hArchive = NULL;
+    DWORD ignored = 0;
+    bool bRetVal;
+
+    // Open the Archive
+    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(args[0]->ToString()), 0, 0, &hArchive);
+
+    if (bArchive) {
+        // Remove the File
+        SFileRemoveFile(hArchive, "replay.message.events", ignored);
+
+        // Confirm if file has been removed.
+        bRetVal = !SFileHasFile(hArchive, "replay.message.events");
+
+        // Close Archive
+        SFileCloseArchive(hArchive);
+
+    } else {
+        bRetVal = bArchive;
+    }
+
+    args.GetReturnValue().Set(Nan::New<v8::Boolean>(bRetVal));
+    return;
+}
+
 void init(v8::Handle<v8::Object> exports) {
     Nan::Export(exports, "extractFile", extractFile);
     Nan::Export(exports, "getHeader", getHeader);
+    Nan::Export(exports, "removeMessages", removeMessages);
 }
 
 NODE_MODULE(StormLib, init);
