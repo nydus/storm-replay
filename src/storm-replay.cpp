@@ -40,6 +40,8 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
                 }
             }
 
+            SFileCloseFile(hFile);
+
             if (!buffer.IsEmpty()) {
                 args.GetReturnValue().Set(buffer.ToLocalChecked());
             } else {
