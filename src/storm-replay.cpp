@@ -13,6 +13,7 @@
 #include "StormLib/src/StormCommon.h"
 #include "StormLib/src/StormPort.h"
 
+// Extract a file from the archive
 void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     Nan::HandleScope scope;
 
@@ -57,6 +58,7 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     }
 }
 
+// Get the full header from archive
 void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     Nan::HandleScope scope;
 
