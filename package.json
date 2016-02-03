@@ -6,7 +6,7 @@
   "scripts": {
     "cpplint": "node_modules/node-cpplint/bin/cpplint --verbose 3 src/storm-replay.cpp --linelength 120",
     "jslint": "node_modules/grunt-contrib-jshint/node_modules/.bin/jshint *.js",
-    "rebuild": "node-gyp configure build",
+    "rebuild": "node-gyp rebuild",
     "test": "npm run cpplint && npm run jslint && npm run rebuild",
     "predeploy": "npm test"
   },
