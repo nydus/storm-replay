@@ -1,5 +1,5 @@
 storm-replay
-========
+============
 
 NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib) for
 parsing Heroes of the Storm replay files (`.StormReplay`).
