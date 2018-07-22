@@ -1,6 +1,6 @@
 var storm = require('../');
 
-var bool = storm.removeMessages('example.StormReplay');
+var bool = storm.removeMessages('test/replays/example.StormReplay');
 
 console.log("replay.messages.events", (bool) ? "successfully" : "NOT", "removed.")
 
