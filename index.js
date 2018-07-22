@@ -26,7 +26,7 @@ const FILES = [
     'replay.attributes.events',
     'replay.details',
     'replay.game.events',
-    'replay.initData',
+    'replay.initdata',
     'replay.load.info',
     'replay.message.events',
     'replay.smartcam.events',
