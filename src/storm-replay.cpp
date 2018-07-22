@@ -62,50 +62,59 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
 void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     Nan::HandleScope scope;
 
-    // set up variables
-    std::ifstream archive;
 
-    // open the binary file
-    archive.open(*v8::String::Utf8Value(args[0]->ToString()), std::ifstream::binary | std::ios::in);
+    HANDLE hArchive = NULL;
 
-    if (archive.is_open() == true) {
+    // Open the Archive
+    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(args[0]->ToString()), 0, 0, &hArchive);
+
+    if (bArchive) {
+
         // set up variables
-        char * readBuffer;
-        uint32_t userDataHeaderSize;
+        std::ifstream archive;
 
-        // seek to the position of the size of the header
-        archive.seekg(12);
-        archive.read(reinterpret_cast<char *>(&userDataHeaderSize), sizeof(userDataHeaderSize));
+        // open the binary file
+        archive.open(*v8::String::Utf8Value(args[0]->ToString()), std::ifstream::binary | std::ios::in);
 
-        // Get back to the beginning of the file.
-        archive.seekg(0);
+        if (archive.is_open() == true) {
+            // set up variables
+            char * readBuffer;
+            uint32_t userDataHeaderSize;
 
-        // create a readBuffer for entire header
-        readBuffer = new char[16 + userDataHeaderSize + 1];
+            // seek to the position of the size of the header
+            archive.seekg(12);
+            archive.read(reinterpret_cast<char *>(&userDataHeaderSize), sizeof(userDataHeaderSize));
 
-        // read entire header from the file
-        archive.read(readBuffer, 16 + userDataHeaderSize);
+            // Get back to the beginning of the file.
+            archive.seekg(0);
 
-        // append the null byte to terminate the string
-        readBuffer[16 + userDataHeaderSize] = '\0';
+            // create a readBuffer for entire header
+            readBuffer = new char[16 + userDataHeaderSize + 1];
 
-        // DEBUG
-        // for (uint32_t i = 0; i < 16 + userDataHeaderSize; i++) {
-        //    printf("readBuffer[%d] is %X\n", i, static_cast<unsigned char>(readBuffer[i]));
-        // }
+            // read entire header from the file
+            archive.read(readBuffer, 16 + userDataHeaderSize);
 
-        // Copy the readDuffer to a buffer that will be garbage collected by v8.
-        v8::MaybeLocal<v8::Object> buffer = Nan::CopyBuffer(readBuffer, 16 + userDataHeaderSize);
+            // append the null byte to terminate the string
+            readBuffer[16 + userDataHeaderSize] = '\0';
 
-        // Garbage cleanup.
-        delete[] readBuffer;
-        archive.close();
+            // DEBUG
+            // for (uint32_t i = 0; i < 16 + userDataHeaderSize; i++) {
+            //    printf("readBuffer[%d] is %X\n", i, static_cast<unsigned char>(readBuffer[i]));
+            // }
 
-        // Return buffer
-        args.GetReturnValue().Set(buffer.ToLocalChecked());
-        return;
+            // Copy the readDuffer to a buffer that will be garbage collected by v8.
+            v8::MaybeLocal<v8::Object> buffer = Nan::CopyBuffer(readBuffer, 16 + userDataHeaderSize);
+
+            // Garbage cleanup.
+            delete[] readBuffer;
+            archive.close();
+
+            // Return buffer
+            args.GetReturnValue().Set(buffer.ToLocalChecked());
+            return;
+        }
+
     }
-
     // File was closed, return false
     args.GetReturnValue().Set(Nan::New<v8::Boolean>(false));
 }
