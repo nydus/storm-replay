@@ -23,14 +23,17 @@ Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
 };
 
 const FILES = [
+    'header',
     'replay.attributes.events',
     'replay.details',
     'replay.game.events',
     'replay.initdata',
     'replay.load.info',
     'replay.message.events',
+    'replay.server.battlelobby',
     'replay.smartcam.events',
     'replay.sync.events',
+    'replay.sync.history',
     'replay.tracker.events'
 ];
 
