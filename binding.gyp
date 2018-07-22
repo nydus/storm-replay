@@ -285,19 +285,6 @@
                         '-lz',
                     ]
                 },
-            },
-         'OS=="win"',
-            {
-                'cflags': [
-                    '-Wall',
-                    '-D_7ZIP_ST',
-                    '-shared',
-                ],
-                'link_settings': {
-                    'libraries': [
-                        '-lwininet',
-                    ]
-                },
             }
         ]
       ]

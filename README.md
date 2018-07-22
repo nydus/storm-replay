@@ -66,8 +66,7 @@ issue.
 
 # TODO
 
-* Currently, the build is only working on OSX. It should be relatively easy to
-convert the `Makefile` for Linux, but may take quite a bit of time for Windows.
+* Currently, the build is only working on OSX and Linux.
 
 # References
 
