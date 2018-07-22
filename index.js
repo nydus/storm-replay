@@ -30,7 +30,8 @@ const FILES = [
     'replay.load.info',
     'replay.message.events',
     'replay.smartcam.events',
-    'replay.sync.events'
+    'replay.sync.events',
+    'replay.tracker.events'
 ];
 
 /*
