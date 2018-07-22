@@ -236,6 +236,9 @@
         "src/StormLib/src/zlib/deflate.c",
         "src/StormLib/src/zlib/inflate.c",
         "src/StormLib/src/zlib/zutil.c",
+        "src/StormLib/src/lzma/C/LzFind.c",
+        "src/StormLib/src/lzma/C/LzmaEnc.c",
+        "src/StormLib/src/lzma/C/LzmaDec.c",
         "src/StormLib/src/jenkins/lookup3.c"
       ],
       'include_dirs': [
@@ -246,19 +249,53 @@
       'conditions': [
         [ 'OS=="mac"',
             {
+                'sources!': [
+                    "src/StormLib/src/lzma/C/LzFind.c",
+                    "src/StormLib/src/lzma/C/LzmaEnc.c",
+                    "src/StormLib/src/lzma/C/LzmaDec.c",
+                ],
                 'cflags': [
                     '-Wall',
                     '-D__SYS_BZLIB',
                     '-D__SYS_ZLIB',
                     '-D_7ZIP_ST',
-                    '-arch x86_64'
-                    '-shared',
+                    '-arch x86_64',
+                    '-shared'
                 ],
                 'link_settings': {
                     'libraries': [
                         '-lbz2',
                         '-lz',
                         '-framework Carbon',
+                    ]
+                },
+            },
+         'OS=="linux"',
+            {
+                'cflags': [
+                    '-Wall',
+                    '-fPIC',
+                    '-D__SYS_BZLIB',
+                    '-D__SYS_ZLIB',
+                    '-D_7ZIP_ST',
+                ],
+                'link_settings': {
+                    'libraries': [
+                        '-lbz2',
+                        '-lz',
+                    ]
+                },
+            }
+         'OS=="win"',
+            {
+                'cflags': [
+                    '-Wall',
+                    '-D_7ZIP_ST',
+                    '-shared',
+                ],
+                'link_settings': {
+                    'libraries': [
+                        '-lwininet',
                     ]
                 },
             }
