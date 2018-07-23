@@ -1,6 +1,6 @@
 {
   "name": "storm-replay",
-  "version": "0.3.0-alpha.4",
+  "version": "0.3.0-alpha.5",
   "description": "NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,10 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "os" : [ "darwin", "linux" ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
   "keywords": [
     "hots",
     "blizzard",
