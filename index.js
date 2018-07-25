@@ -94,7 +94,7 @@ module.exports = {
             return {
                 success: false,
                 details: {
-                    reason: File + ' not permitted.',
+                    reason: 'Extraction of ' + File + ' not permitted.',
                     args: [
                         {
                             name: 'Archive',

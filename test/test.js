@@ -99,7 +99,7 @@ const valid = {
         fileNotFound: {
             "success": false,
             "details": {
-                "reason": "replay.fileNotFound not permitted.",
+                "reason": "Extraction of replay.fileNotFound not permitted.",
                 "args": [
                     {
                         "name": "Archive",
@@ -115,7 +115,7 @@ const valid = {
         fileNotValid: {
             success: false,
             details: {
-                reason: 'Extraction of file failed.',
+                reason: 'Extraction of replay.details failed.',
                 args: [
                     {
                         name: 'Archive',
