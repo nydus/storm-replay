@@ -7,6 +7,8 @@
     "cpplint": "node_modules/node-cpplint/bin/cpplint --verbose 3 src/storm-replay.cpp --linelength 120",
     "jslint": "node_modules/jshint/bin/jshint *.js",
     "rebuild": "node-gyp rebuild",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags",
     "test": "node_modules/mocha/bin/mocha",
     "prepare": "git submodule init && git submodule update",
     "predeploy": "npm test && npm run cpplint && npm run jslint && npm run rebuild && git checkout -- test/replays/example.StormReplay"
