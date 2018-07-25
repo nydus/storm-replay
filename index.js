@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 
+const log = require('./pino.js');
 const bindings = require('bindings')('storm-replay');
 const fs = require('fs');
 const version = require('./package.json').version;
@@ -43,6 +44,7 @@ const FILES = [
 module.exports = {
     version: version,
     extractFile: function(Archive, File) {
+        log.trace("extractFile('" + Archive + "', '" + File + "')");
         if (!fs.existsSync(Archive)) {
             return {
                 success: false,
@@ -109,6 +111,7 @@ module.exports = {
     },
 
     getHeader: function(Archive) {
+        log.trace("getHeader('" + Archive + "')");
         if (fs.existsSync(Archive)) {
             var ret = bindings.getHeader(Archive);
             if (ret.length === undefined) {
@@ -160,6 +163,7 @@ module.exports = {
      * @summary Remove replay.message.events from the MPQ archive.
      */
     removeMessages: function(Archive) {
+        log.trace("removeMessages('" + Archive + "')");
         var ret = bindings.removeMessages(Archive);
         return ret;
     }
