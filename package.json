@@ -1,6 +1,6 @@
 {
   "name": "storm-replay",
-  "version": "0.3.0-alpha.6",
+  "version": "0.3.0",
   "description": "NodeJS wrapper for StormLib (https://github.com/ladislav-zezula/StormLib)",
   "main": "index.js",
   "scripts": {
