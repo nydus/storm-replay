@@ -113,7 +113,6 @@ void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
             args.GetReturnValue().Set(buffer.ToLocalChecked());
             return;
         }
-
     }
     // File was closed, return false
     args.GetReturnValue().Set(Nan::New<v8::Boolean>(false));
@@ -157,3 +156,4 @@ void init(v8::Handle<v8::Object> exports) {
 }
 
 NODE_MODULE(StormLib, init);
+
