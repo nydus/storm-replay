@@ -21,11 +21,11 @@ void extractFile(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     HANDLE hFile = NULL;
 
     // Open the Archive
-    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(args[0]->ToString()), 0, 0, &hArchive);
+    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(Nan::New<v8::String>(args[0]).ToLocalChecked()), 0, 0, &hArchive);
 
     if (bArchive) {
         // Read the File
-        bool bFile = SFileOpenFileEx(hArchive, *v8::String::Utf8Value(args[1]->ToString()), 0, &hFile);
+        bool bFile = SFileOpenFileEx(hArchive, *v8::String::Utf8Value(Nan::New<v8::String>(args[1]).ToLocalChecked()), 0, &hFile);
 
         if (bFile) {
             // Capture the file
@@ -66,7 +66,7 @@ void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     HANDLE hArchive = NULL;
 
     // Open the Archive
-    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(args[0]->ToString()), 0, 0, &hArchive);
+    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(Nan::New<v8::String>(args[0]).ToLocalChecked()), 0, 0, &hArchive);
 
     if (bArchive) {
 
@@ -74,7 +74,7 @@ void getHeader(const Nan::FunctionCallbackInfo<v8::Value> & args) {
         std::ifstream archive;
 
         // open the binary file
-        archive.open(*v8::String::Utf8Value(args[0]->ToString()), std::ifstream::binary | std::ios::in);
+        archive.open(*v8::String::Utf8Value(Nan::New<v8::String>(args[0]).ToLocalChecked()), std::ifstream::binary | std::ios::in);
 
         if (archive.is_open() == true) {
             // set up variables
@@ -129,7 +129,7 @@ void removeMessages(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     bool bRetVal;
 
     // Open the Archive
-    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(args[0]->ToString()), 0, 0, &hArchive);
+    bool bArchive = SFileOpenArchive(*v8::String::Utf8Value(Nan::New<v8::String>(args[0]).ToLocalChecked()), 0, 0, &hArchive);
 
     if (bArchive) {
         // Remove the File
@@ -149,11 +149,10 @@ void removeMessages(const Nan::FunctionCallbackInfo<v8::Value> & args) {
     return;
 }
 
-void init(v8::Handle<v8::Object> exports) {
+void init(v8::Local<v8::Object> exports) {
     Nan::Export(exports, "extractFile", extractFile);
     Nan::Export(exports, "getHeader", getHeader);
     Nan::Export(exports, "removeMessages", removeMessages);
 }
 
 NODE_MODULE(StormLib, init);
-
