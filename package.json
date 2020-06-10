@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/jnovack/storm-replay",
   "engines": {
-    "node": "8.x"
+    "node": ">8 <11"
   },
   "os": [
     "darwin",
