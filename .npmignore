@@ -3,3 +3,4 @@ replays/
 node_modules/
 *.log
 .gitignore
+.vscode/
