@@ -1,10 +1,17 @@
 storm-replay
 ============
 
-![Works with Node 8](https://img.shields.io/badge/node%20v8-%20%E2%9C%94-brightgreen)
-![Works with Node 10](https://img.shields.io/badge/node%20v10-%20%E2%9C%94-brightgreen)
-![Does NOT work with Node 12](https://img.shields.io/badge/node%20v12-%20%E2%9D%8C-critical)
-![Does NOT work with Node 14](https://img.shields.io/badge/node%20v14-%20%E2%9D%8C-critical)
+![Works with Node v8](https://img.shields.io/badge/node%20v8-%20%E2%9C%94-brightgreen)
+![Works with Node v10](https://img.shields.io/badge/node%20v10-%20%E2%9C%94-brightgreen)
+![Does NOT work with Node v12](https://img.shields.io/badge/node%20v12-%20%E2%9D%8C-critical)
+![Does NOT work with Node v14](https://img.shields.io/badge/node%20v14-%20%E2%9D%8C-critical)
+
+![Works with node-gyp v6.1.0](https://img.shields.io/badge/node--gyp%20v6.1.0-%20%E2%9C%94-brightgreen)
+![Does NOT work with node-gyp v7](https://img.shields.io/badge/node--gyp%20v7-%20%E2%9D%8C-critical)
+
+![Works with StormLib v9.21](https://img.shields.io/badge/StormLib%20v9.21-%20%E2%9C%94-brightgreen)
+![Does NOT work with StormLib v9.22](https://img.shields.io/badge/StormLib%20v9.22-%20%E2%9D%8C-critical)
+
 
 ***2018-12 Update** Since Blizzard has decided to effectively kill Heroes of the Storm by ending all competitive esports entirely, shifting developers off the game, and “changing the cadence” of updates, I have no longer cared about the game and have halted all development.  Shame, as it was a beloved game for me, but seeing as they completely dropped by the ball by failing to bring the game to market in a timely manner to compete in the MOBA space, my updates to this project will be considered few and very far between.*
 
@@ -70,10 +77,6 @@ issue.
 ```javascript
     return bool;
 ```
-
-## TODO
-
-* Currently, the build is only working on OSX and Linux.
 
 ## References
 
