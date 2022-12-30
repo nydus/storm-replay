@@ -48,7 +48,7 @@
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-simple-mocha": "^0.4.1",
-    "mocha": "^7.2.0",
+    "mocha": "^10.2.0",
     "node-cpplint": "^0.4.0"
   }
 }
